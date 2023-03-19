@@ -1,10 +1,14 @@
+//PODSTAWY
+
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
-var port = 1123;
+const port = 3000;
 app = express();
 
 app.use(cors());
+
+//POŁĄCZENIE BAZY DANCYH
 
 var con = mysql.createConnection({
   host: "localhost",
@@ -13,17 +17,23 @@ var con = mysql.createConnection({
   database: "glosowanie",
 });
 
+//SPRAWDZA CZY W TERMINALU WYSTĘPUJE BŁĄD
+
 con.connect(function (err) {
   if (err) console.log(err);
   console.log("Połącznie Zatwierdzone");
 });
 
+//TWORZENIE ENDPOINTÓW
+
 app.get("/", function (req, res) {
   res.send("Done");
 });
 
+//ENDPOINT
+
 app.get("/select", function (req, res) {
-  var sql = "SELECT * FROM glosowanie";
+  const sql = "SELECT * FROM glosowanie";
 
   con.query(sql, function (err, result, fields) {
     if (err) console.log(err);
@@ -31,11 +41,15 @@ app.get("/select", function (req, res) {
   });
 });
 
+//ENDPOINT
+
 app.get("/add/:pesel/:kandydats", function (req, res) {
+  //PARAMS MA ZA ZADANIE ODCZYTYWAC DANE Z ENDPOINTA
+
   var pesel = req.params.pesel;
   var kandydats = req.params.kandydats;
 
-  var sql = `INSERT INTO glosowanie(Pesel, kandydat) VALUES ('${pesel}', '${kandydats}') `;
+  const sql = `INSERT INTO glosowanie(Pesel, kandydat) VALUES ('${pesel}', '${kandydats}') `;
 
   con.query(sql, function (err, result, fields) {
     if (err) console.log(err);

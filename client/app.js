@@ -3,7 +3,7 @@
 json = [];
 
 async function getData() {
-  const data = await fetch("http://localhost:1123/select");
+  const data = await fetch("http://localhost:3000/select");
   json = await data.json();
   console.log(json);
 }
@@ -12,7 +12,7 @@ getData();
 //STWORZENIE PODSTAWOWEJ FUNKCJI AWAIT. "SCHEMAT"
 
 async function getKans() {
-  const data = await fetch("http://localhost:1123/selectkans");
+  const data = await fetch("http://localhost:3000/selectkans");
   const kanson = await data.json();
   console.log(kanson);
 
@@ -75,9 +75,9 @@ async function Morawiecki() {
       znikanie();
 
       const upd = await fetch(
-        `http://localhost:1123/add/${inputpesel}/Mateusz_Morawiecki`
+        `http://localhost:3000/add/${inputpesel}/Mateusz_Morawiecki`
       );
-      const dov = await fetch(`http://localhost:1123/plus/1`);
+      const dov = await fetch(`http://localhost:3000/plus/1`);
     } else {
     }
   }
@@ -103,9 +103,9 @@ async function Mentzen() {
       );
       znikanie();
       const upd = await fetch(
-        `http://localhost:1123/add/${inputpesel}/Sławomir_Mentzen`
+        `http://localhost:3000/add/${inputpesel}/Sławomir_Mentzen`
       );
-      const dov = await fetch(`http://localhost:1123/plus/2`);
+      const dov = await fetch(`http://localhost:3000/plus/2`);
     } else {
     }
   }
@@ -131,9 +131,9 @@ async function Trzaskowski() {
       );
       znikanie();
       const upd = await fetch(
-        `http://localhost:1123/add/${inputpesel}/Rafał_Trzaskowski`
+        `http://localhost:3000/add/${inputpesel}/Rafał_Trzaskowski`
       );
-      const dov = await fetch(`http://localhost:1123/plus/3`);
+      const dov = await fetch(`http://localhost:3000/plus/3`);
     }
   }
 }

@@ -1,5 +1,5 @@
 async function Morawiecki() {
-  const url = "http://localhost:1123/selboe";
+  const url = "http://localhost:3000/selboe";
   const response = await fetch(url);
   const json = await response.json();
 
@@ -7,7 +7,7 @@ async function Morawiecki() {
 }
 
 async function Mentzen() {
-  const url = "http://localhost:1123/selbar";
+  const url = "http://localhost:3000/selbar";
   const response = await fetch(url);
   const json = await response.json();
 
@@ -15,7 +15,7 @@ async function Mentzen() {
 }
 
 async function Trzaskowski() {
-  const url = "http://localhost:1123/selpud";
+  const url = "http://localhost:3000/selpud";
   const response = await fetch(url);
   const json = await response.json();
 
@@ -90,7 +90,7 @@ setInterval(async function () {
 }, 10000);
 
 async function getData() {
-  const data = await fetch("http://localhost:1123/select");
+  const data = await fetch("http://localhost:3000/select");
   json = await data.json();
   console.log(json);
 
@@ -118,7 +118,7 @@ setInterval(async function () {
 }, 10000);
 
 async function getVotes() {
-  const datas = await fetch("http://localhost:1123/selvotes");
+  const datas = await fetch("http://localhost:3000/selvotes");
   jsons = await datas.json();
   console.log(jsons);
 
