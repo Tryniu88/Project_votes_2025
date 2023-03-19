@@ -43,7 +43,6 @@ async function getKans() {
     div.classList.add("kands");
     h1.innerHTML = "Imię i nazwisko: " + kanson[i].Imieinazwisko;
     h2.innerHTML = "Lat: " + kanson[i].Lat;
-    h3.innerHTML = "Iq: " + kanson[i].Iq;
 
     const body = document.getElementById("kandydaci");
 
@@ -155,10 +154,20 @@ async function znikanie() {
   kandydaci.style.height = "100%";
 
   const h1 = document.createElement("h1");
+  const img = document.createElement("img");
 
   h1.innerHTML =
     "Serdecznie dziękujemy, za wzięcie udziału w wyborach na prezydenta Polski 2025! Wyniki będą ogłoszone za jakiś czas";
   h1.style.color = "white";
   h1.style.fontFamily = "Arial, Helvetica, sans-serif";
+  img.setAttribute(
+    "src",
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAACcCAMAAABhn0ZIAAAABlBMVEXp6OfUIT2ZV8IEAAAAeklEQVR4nO3PAQEAAAjDoNu/tEEGDdgAAAAAAAAAAAAAAAAAAAAAAACAgMtSL1IvUi9SL1IvUi9SL1IvUi9SL1IvUi9SL1IvUi9SL1IvUi9SL1IvUi9SL1IvUi9SL1IvUi9SL1IvUi9SL1IvUi9SL1IvUi9SL1IvCtcf8h9MLfZKYnkAAAAASUVORK5CYII="
+  );
+
+  img.setAttribute("alt", "nature");
+  img.setAttribute("height", 350);
+  img.setAttribute("width", 550);
   kandydaci.appendChild(h1);
+  kandydaci.appendChild(img);
 }

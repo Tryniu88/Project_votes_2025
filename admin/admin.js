@@ -1,3 +1,23 @@
+var k1 = 0;
+var k2 = 0;
+var k3 = 0;
+
+var char;
+
+kanson = [];
+
+async function getKans() {
+  const data = await fetch("http://localhost:3000/selectkans");
+  kanson = await data.json();
+
+  if (char != undefined) {
+    niszcz();
+  }
+  console.log(kanson);
+  upd();
+}
+getKans();
+
 async function Morawiecki() {
   const url = "http://localhost:3000/selboe";
   const response = await fetch(url);
@@ -26,27 +46,10 @@ Morawiecki();
 Mentzen();
 Trzaskowski();
 
-let chartInstance = null;
-
 async function upd() {
   const ctx = document.getElementById("myChart");
 
-  const datapoints = await Promise.all([
-    Morawiecki(),
-    Mentzen(),
-    Trzaskowski(),
-  ]);
-
-  const moraw = datapoints[0].map((datapoints) => datapoints.liczbaglosow);
-  const mentz = datapoints[1].map((datapoints) => datapoints.liczbaglosow);
-  const trzas = datapoints[2].map((datapoints) => datapoints.liczbaglosow);
-
-  if (chartInstance !== null) {
-    chartInstance.destroy();
-    chartInstance = null;
-  }
-
-  chartInstance = new Chart(ctx, {
+  char = new Chart(ctx, {
     type: "pie",
     data: {
       labels: ["Mateusz Morawiecki", "Sławomir Mentzen", "Rafał Trzaskowski"],
@@ -54,7 +57,7 @@ async function upd() {
       datasets: [
         {
           label: "Ilość zebranych głosów",
-          data: [moraw, mentz, trzas],
+          data: [k1, k2, k3],
           backgroundColor: ["#000039 ", "#1a2421 ", "#353839"],
           borderWidth: 0.6,
           borderColor: "#f0ffff ",
@@ -133,3 +136,11 @@ getVotes();
 setInterval(async function () {
   const y = await getVotes();
 }, 10000);
+
+function niszcz() {
+  char.destroy;
+}
+
+// function glosy(i) {
+// await fetch(`http://localhost:3000/plus/${i}`);
+// getKans()
