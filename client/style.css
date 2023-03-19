@@ -55,6 +55,7 @@ body {
   flex-direction: column;
   align-items: center;
   color: aliceblue;
+  cursor: pointer;
 }
 
 h1 {

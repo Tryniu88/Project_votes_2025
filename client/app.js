@@ -11,6 +11,8 @@ getData();
 
 //STWORZENIE PODSTAWOWEJ FUNKCJI AWAIT. "SCHEMAT"
 
+kanson = [];
+
 async function getKans() {
   const data = await fetch("http://localhost:3000/selectkans");
   const kanson = await data.json();
@@ -19,6 +21,7 @@ async function getKans() {
   //TWORZENIE NIEZBĘDNYCH ELEMENTÓW ORAZ NADAWANIE IM ATRYBUTÓW.
 
   for (var i = 0; i <= kanson.length - 1; i++) {
+    console.log("ok");
     const div = document.createElement("div");
 
     div.setAttribute("id", `${i}`);
@@ -48,8 +51,6 @@ async function getKans() {
     div.appendChild(h2);
     div.appendChild(h3);
     body.appendChild(div);
-
-    console.log("ok");
   }
 }
 getKans();
@@ -154,7 +155,10 @@ async function znikanie() {
   kandydaci.style.height = "100%";
 
   const h1 = document.createElement("h1");
+
   h1.innerHTML =
     "Serdecznie dziękujemy, za wzięcie udziału w wyborach na prezydenta Polski 2025! Wyniki będą ogłoszone za jakiś czas";
+  h1.style.color = "white";
+  h1.style.fontFamily = "Arial, Helvetica, sans-serif";
   kandydaci.appendChild(h1);
 }
