@@ -3,7 +3,7 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
-const port = 3000;
+const port = 3001;
 app = express();
 
 app.use(cors());
@@ -67,7 +67,7 @@ app.get("/selectkans", function (req, res) {
   });
 });
 
-app.get("/selboe", function (req, res) {
+app.get("/selmor", function (req, res) {
   var sql = "SELECT liczbaglosow FROM kandydaci WHERE ID_kandydata = 1";
 
   con.query(sql, function (err, result, fields) {
@@ -75,7 +75,7 @@ app.get("/selboe", function (req, res) {
     res.send(result);
   });
 });
-app.get("/selbar", function (req, res) {
+app.get("/selmen", function (req, res) {
   var sql = "SELECT liczbaglosow FROM kandydaci WHERE ID_kandydata = 2";
 
   con.query(sql, function (err, result, fields) {
@@ -83,7 +83,7 @@ app.get("/selbar", function (req, res) {
     res.send(result);
   });
 });
-app.get("/selpud", function (req, res) {
+app.get("/seltrz", function (req, res) {
   var sql = "SELECT liczbaglosow FROM kandydaci WHERE ID_kandydata = 3";
 
   con.query(sql, function (err, result, fields) {

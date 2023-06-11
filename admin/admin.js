@@ -47,6 +47,10 @@ Mentzen();
 Trzaskowski();
 
 async function upd() {
+  k1 = await Morawiecki();
+  k2 = await Mentzen();
+  k3 = await Trzaskowski();
+  console.log(k1);
   const ctx = document.getElementById("myChart");
 
   char = new Chart(ctx, {
@@ -57,7 +61,7 @@ async function upd() {
       datasets: [
         {
           label: "Ilość zebranych głosów",
-          data: [k1, k2, k3],
+          data: [k1[0].liczbaglosow, k2[0].liczbaglosow, k3[0].liczbaglosow],
           backgroundColor: ["#000039 ", "#1a2421 ", "#353839"],
           borderWidth: 0.6,
           borderColor: "#f0ffff ",
@@ -89,8 +93,16 @@ async function upd() {
 }
 
 setInterval(async function () {
-  const n = await upd();
+  getKans();
 }, 10000);
+
+async function coems() {
+  k1 = await Morawiecki();
+  k2 = await Mentzen();
+  k3 = await Trzaskowski();
+  char.data = [k1[0].liczbaglosow, k2[0].liczbaglosow, k3[0].liczbaglosow];
+  char.update();
+}
 
 async function getData() {
   const data = await fetch("http://localhost:3000/select");
@@ -128,7 +140,7 @@ async function getVotes() {
   const last = document.getElementById("last");
   const h1 = document.createElement("h1");
   last.innerHTML = "";
-  h1.innerHTML = "Zostało oddanych już: " + jsons[0].glosy + " głosów";
+  h1.innerHTML = "Zostało oddanych już: " + json.length + " głosów";
   last.appendChild(h1);
 }
 getVotes();
@@ -138,7 +150,7 @@ setInterval(async function () {
 }, 10000);
 
 function niszcz() {
-  char.destroy;
+  char.destroy();
 }
 
 // function glosy(i) {
